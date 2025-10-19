@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "US001",
+      "userName": "MindX"
+    },
+    {
+      "id": "US002",
+      "useName": "Nobi Nobita"
+    },
+    {
+      "id": "US0013",
+      "userName": "MindX 13"
+    }
+  ],
+  "posts": [
+    {
+      "id": "PS001",
+      "content": "Nội dung học về JSON Server!",
+      "authorId": "US001"
+    }
+  ],
+  "comments": [
+    {
+      "id": "CMT001",
+      "postId": "PS001",
+      "content": "Bài học này rất ý nghĩa! Cảm ơn MindX!",
+      "authorId": "US002"
+    }
+  ]
+}
