@@ -8,16 +8,16 @@ import {
 } from '../controllers/user.controller.js';
 import { validate, validateUser, validateUserUpdate, validateObjectId } from '../middleware/validate.js';
 
-const router = express.Router();
+const userRouter = express.Router();
 
-router.route('/')
+userRouter.route('/')
     .get(getAllUsers)
     .post(validate(validateUser), createUser);
 
-router.route('/:id')
+userRouter.route('/:id')
     .get(validateObjectId, getUserById)
     .put(validateObjectId, validate(validateUserUpdate), updateUser)
     .delete(validateObjectId, deleteUser);
 
-export default router;
+export default userRouter;
 

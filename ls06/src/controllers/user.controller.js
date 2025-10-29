@@ -33,6 +33,27 @@ export const getAllUsers = async (req, res) => {
 
 export const getUserById = async (req, res) => {
     try {
+        // authN
+        const {isAuthenticated, userId} = req.body;
+        const xUserId = req.headers['x-user-id'];
+        console.log(xUserId, 'typeof xUserId', typeof xUserId);
+
+        console.log(userId, 'typeof userId', typeof userId);
+
+        if (!isAuthenticated) {
+            return res.status(401).json({
+                success: false,
+                error: 'Unauthorized'
+            });
+        }
+        if (xUserId !== req.params.id) {
+            return res.status(403).json({
+                success: false,
+                error: 'Forbidden'
+            });
+        }
+        // authZ
+
         const user = await User.findById(req.params.id);
         if (!user) {
             return res.status(404).json({

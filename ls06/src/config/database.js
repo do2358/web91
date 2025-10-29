@@ -3,6 +3,7 @@ import logger from './logger.js';
 
 const connectDB = async () => {
     try {
+        console.log(process.env);
         logger.info(`Starting MongoDB connection... ${process.env.MONGODB_URI}`);
         const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/web91');
         logger.info(`MongoDB Connected: ${conn.connection.host}`);
