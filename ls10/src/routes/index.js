@@ -1,13 +1,15 @@
 import express from "express";
 import userRoutes from "./user.routes.js";
 import postRoutes from "./post.routes.js";
-import authRoutes from "./auth.routes.js";
+// import authRoutes from "./auth.routes.js";
+import uploadRouter from "./upload.routes.js";
 
 const router = express.Router();
 
 // router.use('/auths', authRoutes);
 router.use("/users", userRoutes);
 router.use("/posts", postRoutes);
+router.use("/uploads", uploadRouter);
 
 export default router;
 
