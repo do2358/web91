@@ -6,25 +6,6 @@ export const createPost = async (req, res) => {
     console.log(`start create post`);
     const postData = { ...req.body };
 
-    // console.log(`req.files: ${JSON.stringify(req.files)}`);
-    
-    if (req.files) {
-      if (req.files.coverImage && req.files.coverImage[0]) {
-        const coverImageResult = await uploadSingleToCloudinary(req.files.coverImage[0]);
-        postData.coverImage = {
-          url: coverImageResult.secure_url,
-          publicId: coverImageResult.public_id
-        };
-      }
-      
-      if (req.files.thumbnail && req.files.thumbnail[0]) {
-        const thumbnailResult = await uploadSingleToCloudinary(req.files.thumbnail[0]);
-        postData.thumbnail = {
-          url: thumbnailResult.secure_url,
-          publicId: thumbnailResult.public_id
-        };
-      }
-    }
     
     const post = await Post.create(postData);
     res.status(201).json({

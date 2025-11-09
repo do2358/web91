@@ -13,11 +13,11 @@ const postRouter = express.Router();
 
 postRouter.route('/')
     .get(getAllPosts)
-    .post(uploadPostImages, validate(validatePost), createPost);
+    .post( validate(validatePost), createPost);
 
 postRouter.route('/:id')
     .get(validateObjectId, getPostById)
-    .put(validateObjectId, uploadPostImages, validate(validatePostUpdate), updatePost)
+    .put(validateObjectId, validate(validatePostUpdate), updatePost)
     .delete(validateObjectId, deletePost);
 
 export default postRouter;

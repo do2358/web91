@@ -88,6 +88,18 @@ export const validatePost = (data) => {
         errors.push('Author is required and must be a valid user ID');
     }
 
+    if(data.coverImage !== undefined) {
+        if (!data.coverImage.url || !data.coverImage.publicId) {
+            errors.push('Cover image is required and must be a valid image');
+        }
+    }
+
+    if(data.thumbnail !== undefined) {
+        if (!data.thumbnail.url || !data.thumbnail.publicId) {
+            errors.push('Thumbnail is required and must be a valid image');
+        }
+    }
+
     if (data.tags !== undefined) {
         if (!Array.isArray(data.tags)) {
             errors.push('Tags must be an array');
